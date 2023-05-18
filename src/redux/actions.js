@@ -29,7 +29,8 @@ export const getAllTasksFailure = (payload) => ({
   payload,
 });
 
-export const getAllTasks = (payload) => (dispatch) => {
+export const getAllTasks = () => (dispatch) => {
+  console.log("Here")
   dispatch(getAllTaskRequest());
   axios
     .get("http://localhost:8000/todo")
@@ -101,7 +102,7 @@ export const deleteTaskFailure = (payload) => ({
 export const deleteTask = (payload) => (dispatch) => {
   dispatch(deleteTaskRequest());
   axios
-    .delete(`http://localhost:8000/todo/${payload.taskId}`)
+    .delete(`http://localhost:8000/todo/${payload}`)
     .then((res) => dispatch(deleteTaskSuccess(res)))
     .catch((err) => dispatch(deleteTaskFailure(err)));
 };
